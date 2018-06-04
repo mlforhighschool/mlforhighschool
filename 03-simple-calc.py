@@ -37,17 +37,12 @@ b_final = 0.0
 start_time = time.time()                    # Check start time for calculating
 total_calc_count = 0
 
-for W_index in range(len(W_list)):         # Run loop for W
-    W = W_list[W_index]
-    
-    for b_index in range(len(b_list)):     # Run loop for b
-        b = b_list[b_index]
-
+for W_index, W in enumerate(W_list):         # Run loop for W    
+    for b_index, b in enumerate(b_list):     # Run loop for b
         SE = 0.0                            # Initialize SE (Squared Error) to zero        
-        for data_index in range(len(x_data)): # Run loop for x_data
-            x = x_data[data_index]            
+        for x_index, x in enumerate(x_data): # Run loop for x_data
             y = W*x + b                       # Calculate linear equation with W, x, b
-            err = y_data[data_index] - y      # Calculate error equation
+            err = y_data[x_index] - y      # Calculate error equation
             SE += pow(err, 2)                 # Sum of err^2 for x data
             total_calc_count += 1             # Add +1 to tocal_calc_count
             
